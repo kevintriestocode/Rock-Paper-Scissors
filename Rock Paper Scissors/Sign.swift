@@ -43,7 +43,7 @@ import GameplayKit //Enables GKRandomDistribution
     }
 
     //Function takes Sign as argument and returns GameState. Should compare Signs within body
-func compare(playerChoice: Sign, computerChoice: Sign) -> GameState {
+func whoWins(playerChoice: Sign, computerChoice: Sign) -> GameState {
         if playerChoice == computerChoice {                                         //Draw to same
             return GameState.draw
     //    } else if playerChoice == Sign.rock && computerChoice == Sign.paper {       //Lose To paper

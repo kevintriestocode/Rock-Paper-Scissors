@@ -12,15 +12,18 @@ enum GameState {
     case start, win, lose, draw
 }
 
-func startWinLoseDraw(_ state: GameState) -> String {
-    switch state {
+func whatGameState(currentGameState: GameState) -> String {
+    switch currentGameState {
     case .start:
         return "Rock, Paper, Scissors?"
     case .win:
+        incrementWins()
         return "You won!"
     case .lose:
+        incrementLosses()
         return "You lost!"
     case .draw:
+        incrementDraws()
         return "Draw..."
     }
 }

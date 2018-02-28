@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         restartGame()
+        updateScoreCounter()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -23,36 +25,51 @@ class ViewController: UIViewController {
     }
     
     var computerChoice = randomSign()
-    let playerRock = Sign.rock
-    let playerPaper = Sign.paper
-    let playerScissors = Sign.scissors
+    let rock = Sign.rock
+    let paper = Sign.paper
+    let scissors = Sign.scissors
+    
+    @IBOutlet weak var winCounter: UILabel!
+    @IBOutlet weak var drawCounter: UILabel!
+    @IBOutlet weak var lossCounter: UILabel!
+    func updateScoreCounter() {
+        winCounter.text = "\(numberOfWins)"
+        drawCounter.text = "\(numberOfDraws)"
+        lossCounter.text = "\(numberOfLosses)"
+    }
+
     
     func restartGame() {
         computerChoice = randomSign()
-        titleLabel.text = startWinLoseDraw(GameState.start)
-        computerLabel.text = "🤖"
+        gameStateLabel.text = whatGameState(currentGameState: GameState.start)
+        computerChoiceLabel.text = "🤖"
     }
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var computerLabel: UILabel!
+    @IBOutlet weak var gameStateLabel: UILabel!
+    @IBOutlet weak var computerChoiceLabel: UILabel!
     
     @IBAction func rockButton(_ sender: Any) {
-        computerLabel.text = "🤖: \(symbol(computerChoice))"
-        titleLabel.text = startWinLoseDraw(compare(playerChoice: playerRock, computerChoice: computerChoice))
+        computerChoiceLabel.text = "🤖: \(symbol(computerChoice))"
+        gameStateLabel.text = whatGameState(currentGameState: whoWins(playerChoice: rock, computerChoice: computerChoice))
         computerChoice = randomSign()
+        updateScoreCounter()
     }
     @IBAction func paperButton(_ sender: Any) {
-        computerLabel.text = "🤖: \(symbol(computerChoice))"
-        titleLabel.text = startWinLoseDraw(compare(playerChoice: playerPaper, computerChoice: computerChoice))
+        computerChoiceLabel.text = "🤖: \(symbol(computerChoice))"
+        gameStateLabel.text = whatGameState(currentGameState: whoWins(playerChoice: paper, computerChoice: computerChoice))
         computerChoice = randomSign()
+        updateScoreCounter()
     }
     @IBAction func scissorsButton(_ sender: Any) {
-        computerLabel.text = "🤖: \(symbol(computerChoice))"
-        titleLabel.text = startWinLoseDraw(compare(playerChoice: playerScissors, computerChoice: computerChoice))
+        computerChoiceLabel.text = "🤖: \(symbol(computerChoice))"
+        gameStateLabel.text = whatGameState(currentGameState: whoWins(playerChoice: scissors, computerChoice: computerChoice))
         computerChoice = randomSign()
+        updateScoreCounter()
     }
-    @IBAction func playAgainButton(_ sender: Any) {
+    @IBAction func resetScoreButton(_ sender: Any) {
         restartGame()
+        resetScoreCounter()
+        updateScoreCounter()
     }
     
     
