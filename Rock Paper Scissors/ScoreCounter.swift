@@ -1,11 +1,3 @@
-//
-//  ScoreCounter.swift
-//  Rock Paper Scissors
-//
-//  Created by Kevin Wang on 2/28/18.
-//  Copyright © 2018 KevinWang. All rights reserved.
-//
-
 import Foundation
 var numberOfWins = 0
 var numberOfLosses = 0
