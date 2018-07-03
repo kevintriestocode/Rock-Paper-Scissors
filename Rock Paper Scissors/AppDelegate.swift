@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  Rock Paper Scissors
-//
-//  Created by Kevin Wang on 2/21/18.
-//  Copyright © 2018 KevinWang. All rights reserved.
-//
-
 import UIKit
 
 @UIApplicationMain
