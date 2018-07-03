@@ -24,7 +24,11 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    var computerChoice = randomSign()
+    @IBAction func unwindFromSecondViewController(unwindSegue: UIStoryboardSegue) {
+        
+    }
+    
+    var computerChoice = randomSign() // Declared in Sign.swift
     let rock = Sign.rock
     let paper = Sign.paper
     let scissors = Sign.scissors
@@ -43,6 +47,7 @@ class ViewController: UIViewController {
         computerChoice = randomSign()
         gameStateLabel.text = whatGameState(currentGameState: GameState.start)
         computerChoiceLabel.text = "🤖"
+        
     }
     
     @IBOutlet weak var gameStateLabel: UILabel!
